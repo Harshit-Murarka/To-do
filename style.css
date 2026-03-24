@@ -40,3 +40,23 @@ h1{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.158);
     cursor: grab;
 }
+
+.task-input{
+    background-color: aliceblue;
+    padding:15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.158);
+    cursor:default;
+}
+
+.add-btn{
+    background-color: aliceblue;
+    padding:15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.158);
+    cursor:pointer;
+}
