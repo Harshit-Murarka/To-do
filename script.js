@@ -10,6 +10,7 @@ function addTodoTask() {
     const newCard = document.createElement("div");
     newCard.classList.add("card");
     newCard.innerText = task;
+    newCard.setAttribute("draggable","true");   
     todoColumn.append(newCard);
     todoInput.value = "";
 }
@@ -34,6 +35,7 @@ function ongoingTask() {
     const newCard = document.createElement("div");
     newCard.classList.add("card");
     newCard.innerText = task;
+    newCard.setAttribute("draggable","true");
     ongoingColumn.append(newCard);
     ongoingInput.value = "";
 }
@@ -58,6 +60,7 @@ function doneTask() {
     const newCard = document.createElement("div");
     newCard.classList.add("card");
     newCard.innerText = task;
+    newCard.setAttribute("draggable","true");
     doneColumn.append(newCard);
     doneInput.value = "";
 }
