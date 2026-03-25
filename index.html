@@ -18,10 +18,19 @@
             <input class="task-input"  id="todo-input" type="text" placeholder="Enter Task...">
             <button class="add-btn" id="todo-add-btn">Add Task</button>
 
-            <div class="card" draggable="true">Learn HTML</div>
-            <div class="card" draggable="true">Make a Web-Dev</div>
-            <div class="card" draggable="true">Complete CW</div>
-
+            <div class="card" draggable="true">
+                <span class="card-text">Learn HTML</span>
+                <button class="delete-btn">X</button>
+            </div>
+            <div class="card" draggable="true">
+                <span class="card-text">Make a Web-Dev</span>
+                <button class="delete-btn">X</button>
+            </div>
+            <div class="card" draggable="true">
+                <span class="card-text">Complete CW</span>
+                <button class="delete-btn">X</button>
+            </div>
+            
         </div>
 
         <div class="column" id="ongoing-column">
@@ -31,7 +40,10 @@
             <input class="task-input"  id="ongoing-input" type="text" placeholder="Enter Task...">
             <button class="add-btn" id="ongoing-add-btn">Add Task</button>
 
-            <div class="card" draggable="true">Learn Java</div>
+            <div class="card" draggable="true">
+                <span class="card-text">Learn Java</span>
+                <button class="delete-btn">X</button>
+            </div>
 
         </div>
 
@@ -42,7 +54,10 @@
             <input class="task-input"  id="done-input" type="text" placeholder="Enter Task...">
             <button class="add-btn" id="done-add-btn">Add Task</button>
 
-            <div class="card" draggable="true">Learn Python</div>
+            <div class="card" draggable="true">
+                <span class="card-text">Learn Python</span>
+                <button class="delete-btn">X</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

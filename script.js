@@ -71,3 +71,39 @@ doneInput.addEventListener("keydown", function (event) {
         doneTask();
     }
 });
+
+let draggedCard = null;
+
+document.addEventListener("dragstart", (event) => {
+    
+    if (event.target.classList.contains("card")) {
+        draggedCard = event.target;
+        event.dataTransfer.setData("text/plain", draggedCard.innerText);
+        draggedCard.style.opacity = "0.5";
+    }
+});
+
+document.addEventListener("dragend", (event) => {
+    if (event.target.classList.contains("card")) {
+        event.target.style.opacity = "1";
+        draggedCard = null;
+    }
+});
+
+
+const allColumns = [todoColumn, ongoingColumn, doneColumn];
+
+allColumns.forEach(column => {
+    
+    column.addEventListener("dragover", (event) => {
+        event.preventDefault(); 
+    });
+
+    
+    column.addEventListener("drop", (event) => {
+        event.preventDefault();
+        if (draggedCard) {
+            column.append(draggedCard); 
+        }
+    });
+});

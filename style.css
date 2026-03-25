@@ -15,12 +15,15 @@ h1{
     flex-direction: row;
     gap: 16px;
     padding: 20px;
-    
+    align-items: flex-start;
 }
 
 .column{
     flex: 1;
-    background-color:rgba(127, 255, 191, 0.756);
+    flex-basis: 300px;
+    min-width: 0;
+    overflow-x: hidden;
+    background-color:#ebedef;
     border-radius: 10px;
     padding: 15px;
     min-height: 400px;
@@ -32,31 +35,52 @@ h1{
 }
 
 .card{
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+
+    position: relative;
     background-color: aliceblue;
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 10px;
-    text-align: center;
+    text-align: left;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.158);
     cursor: grab;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .task-input{
-    background-color: aliceblue;
-    padding:15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.158);
-    cursor:default;
+    width: 75%;
+    box-sizing: border-box; 
+    padding: 10px;
+    border: 2px solid #ddd; 
+    border-radius: 6px;
+    margin-bottom: 8px;
 }
 
 .add-btn{
-    background-color: aliceblue;
-    padding:15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.158);
-    cursor:pointer;
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    padding: 10px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.delete-btn{
+    position:absolute;
+    background-color: transparent;
+    border:none;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 14px;
+    top:5px;
+    right:5px;
+    border-top-right-radius: 5px;
+}
+.delete-btn:hover {
+    background-color: #dc3545; 
+    color: white;
 }
