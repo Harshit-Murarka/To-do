@@ -94,3 +94,10 @@ h1{
     background-color: #fee2e2;
     color: #dc2626;
 }
+
+.copyright{
+    text-align: center;
+    margin-top: 18px;
+    color: #6b7280;
+    font-size: 14px;
+}
