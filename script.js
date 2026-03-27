@@ -11,7 +11,7 @@ function addTodoTask() {
     newCard.classList.add("card");
     newCard.setAttribute("draggable", "true");
 
-    /* CHANGE: Created span and button for the card structure */
+    
     const cardText = document.createElement("span");
     cardText.classList.add("card-text");
     cardText.innerText = task;
@@ -20,7 +20,7 @@ function addTodoTask() {
     deleteBtn.classList.add("delete-btn");
     deleteBtn.innerText = "X";
 
-    /* CHANGE: Appended the new elements instead of using innerText */
+    
     newCard.appendChild(cardText);
     newCard.appendChild(deleteBtn);
 
@@ -50,7 +50,7 @@ function ongoingTask() {
     newCard.classList.add("card");
     newCard.setAttribute("draggable", "true");
 
-    /* CHANGE: Applied span + button structure here too */
+    
     const cardText = document.createElement("span");
     cardText.classList.add("card-text");
     cardText.innerText = task;
@@ -88,7 +88,7 @@ function doneTask() {
     newCard.classList.add("card");
     newCard.setAttribute("draggable", "true");
 
-    /* CHANGE: Applied span + button structure here too */
+    
     const cardText = document.createElement("span");
     cardText.classList.add("card-text");
     cardText.innerText = task;
@@ -112,8 +112,7 @@ doneInput.addEventListener("keydown", function (event) {
     }
 });
 
-/* --- DELETE LOGIC (EVENT DELEGATION) --- */
-/* CHANGE: This one listener handles every delete button in every column */
+
 document.getElementById("container").addEventListener("click", (event) => {
     if (event.target.classList.contains("delete-btn")) {
         const cardToRemove = event.target.closest(".card");
@@ -129,11 +128,10 @@ document.getElementById("container").addEventListener("click", (event) => {
 let draggedCard = null;
 
 document.addEventListener("dragstart", (event) => {
-    /* CHANGE: Used .closest() so grabbing the text span still picks up the whole card */
+    
     const card = event.target.closest(".card");
     if (card) {
         draggedCard = card;
-        // setData still works on the card element
         event.dataTransfer.setData("text/plain", draggedCard.innerText);
         draggedCard.style.opacity = "0.5";
     }
