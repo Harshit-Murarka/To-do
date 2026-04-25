@@ -78,6 +78,7 @@ ongoingInput.addEventListener("keydown", function (event) {
 const doneInput = document.getElementById("done-input");
 const doneAddBtn = document.getElementById("done-add-btn");
 const doneColumn = document.getElementById("done-column");
+const resetBoardBtn = document.getElementById("reset-board-btn");
 
 function doneTask() {
     let task = doneInput.value.trim();
@@ -160,6 +161,17 @@ allColumns.forEach(column => {
             saveData();
         }
     });
+});
+
+resetBoardBtn.addEventListener("click", function () {
+    const confirmed = confirm("Reset all tasks?");
+    if (!confirmed) {
+        return;
+    }
+    todoColumn.querySelectorAll(".card").forEach(card => card.remove());
+    ongoingColumn.querySelectorAll(".card").forEach(card => card.remove());
+    doneColumn.querySelectorAll(".card").forEach(card => card.remove());
+    localStorage.removeItem("kanbanData");
 });
 
 

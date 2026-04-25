@@ -12,6 +12,21 @@ h1{
     color: #111827;
 }
 
+.reset-btn{
+    display: block;
+    margin: 0 auto 14px;
+    background-color: #ef4444;
+    color: #ffffff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.reset-btn:hover{
+    background-color: #dc2626;
+}
+
 #container{
     display: flex;
     flex-direction: row;
