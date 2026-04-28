@@ -20,8 +20,13 @@ function addTodoTask() {
     deleteBtn.classList.add("delete-btn");
     deleteBtn.innerText = "X";
 
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("edit-btn");
+    editBtn.innerText = "✎";
+
     
     newCard.appendChild(cardText);
+    newCard.appendChild(editBtn);
     newCard.appendChild(deleteBtn);
 
     todoColumn.append(newCard);
@@ -59,7 +64,12 @@ function ongoingTask() {
     deleteBtn.classList.add("delete-btn");
     deleteBtn.innerText = "X";
 
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("edit-btn");
+    editBtn.innerText = "✎";
+
     newCard.appendChild(cardText);
+    newCard.appendChild(editBtn);
     newCard.appendChild(deleteBtn);
 
     ongoingColumn.append(newCard);
@@ -98,7 +108,12 @@ function doneTask() {
     deleteBtn.classList.add("delete-btn");
     deleteBtn.innerText = "X";
 
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("edit-btn");
+    editBtn.innerText = "✎";
+
     newCard.appendChild(cardText);
+    newCard.appendChild(editBtn);
     newCard.appendChild(deleteBtn);
 
     doneColumn.append(newCard);
@@ -114,7 +129,53 @@ doneInput.addEventListener("keydown", function (event) {
 });
 
 
+function finishInlineEdit(card, textElement, editBtn) {
+    const cleanedTask = textElement.innerText.trim();
+    if (cleanedTask === "") {
+        textElement.innerText = "Untitled Task";
+    } else {
+        textElement.innerText = cleanedTask;
+    }
+    textElement.contentEditable = "false";
+    card.setAttribute("draggable", "true");
+    card.dataset.editing = "false";
+    editBtn.innerText = "✎";
+    saveData();
+}
+
 document.getElementById("container").addEventListener("click", (event) => {
+    if (event.target.classList.contains("edit-btn")) {
+        const cardToEdit = event.target.closest(".card");
+        const textElement = cardToEdit ? cardToEdit.querySelector(".card-text") : null;
+        if (textElement) {
+            const editBtn = event.target;
+            const isEditing = cardToEdit.dataset.editing === "true";
+
+            if (isEditing) {
+                finishInlineEdit(cardToEdit, textElement, editBtn);
+            } else {
+                textElement.contentEditable = "true";
+                textElement.focus();
+                cardToEdit.setAttribute("draggable", "false");
+                cardToEdit.dataset.editing = "true";
+                editBtn.innerText = "✓";
+
+                textElement.onkeydown = function (keyEvent) {
+                    if (keyEvent.key === "Enter") {
+                        keyEvent.preventDefault();
+                        finishInlineEdit(cardToEdit, textElement, editBtn);
+                    }
+                };
+
+                textElement.onblur = function () {
+                    if (cardToEdit.dataset.editing === "true") {
+                        finishInlineEdit(cardToEdit, textElement, editBtn);
+                    }
+                };
+            }
+        }
+    }
+
     if (event.target.classList.contains("delete-btn")) {
         const cardToRemove = event.target.closest(".card");
         if (cardToRemove) {
@@ -132,6 +193,10 @@ document.addEventListener("dragstart", (event) => {
     
     const card = event.target.closest(".card");
     if (card) {
+        if (card.dataset.editing === "true") {
+            event.preventDefault();
+            return;
+        }
         draggedCard = card;
         event.dataTransfer.setData("text/plain", draggedCard.innerText);
         draggedCard.style.opacity = "0.5";
@@ -222,7 +287,12 @@ function createCardFromStorage(taskValue, column) {
     btn.classList.add("delete-btn");
     btn.innerText = "X";
 
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("edit-btn");
+    editBtn.innerText = "✎";
+
     newCard.appendChild(span);
+    newCard.appendChild(editBtn);
     newCard.appendChild(btn);
     column.appendChild(newCard);
 }

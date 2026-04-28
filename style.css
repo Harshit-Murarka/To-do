@@ -112,6 +112,29 @@ h1{
     color: #dc2626;
 }
 
+.edit-btn{
+    position: absolute;
+    top: 5px;
+    right: 34px;
+    background-color: transparent;
+    border: none;
+    color: #4f46e5;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.edit-btn:hover{
+    background-color: #e0e7ff;
+}
+
+.card-text[contenteditable="true"]{
+    outline: 1px dashed #4f46e5;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
 .copyright{
     text-align: center;
     margin-top: 18px;
